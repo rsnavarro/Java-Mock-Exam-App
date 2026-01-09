@@ -1,0 +1,36 @@
+<!-- Question 262: Inheritance Example -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; }
+        .code { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <pre>
+class Animal {
+    public void speak() {
+        System.out.print("Animal speaks");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void speak() {
+        super.speak();
+        System.out.print(", Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.speak();
+    }
+}
+        </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- Question 261: Encapsulation Example -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; }
+        .code { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <pre>
+class Person {
+    private String name;
+    private int age;
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        }
+    }
+    
+    public String getName() { return name; }
+    public int getAge() { return age; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.setName("John");
+        p.setAge(25);
+        System.out.println("Name: " + p.getName() + 
+                          ", Age: " + p.getAge());
+    }
+}
+        </pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Question 297 - Custom Validation Annotation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+    <style>
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        .code-container {
+            background: #1a202c;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #4a5568;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .code-title {
+            color: #63b3ed;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a5568;
+            padding-bottom: 10px;
+        }
+        pre {
+            margin: 0;
+            overflow-x: auto;
+            background: transparent !important;
+        }
+        .token.keyword { color: #ff79c6; }
+        .token.string { color: #50fa7b; }
+        .token.comment { color: #6272a4; }
+        .token.annotation { color: #8be9fd; }
+        .token.class-name { color: #ffb86c; }
+        .token.method { color: #50fa7b; }
+        .line-numbers { color: #6272a4; }
+        .highlight-line {
+            background: rgba(255, 255, 0, 0.1);
+            margin: 0 -20px;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <div class="code-title">Question 297: Custom Method Return Type Validation</div>
+        <pre><code class="language-java">// Custom annotation for validating method return types
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ValidateReturnType {
+    Class&lt;?&gt; expectedType();
+    String message() default "Invalid return type";
+}
+
+// Usage example
+public class DataService {
+    
+    @ValidateReturnType(expectedType = String.class)
+    public Object getUserName(int userId) {
+        // This method should return String but returns Object
+        if (userId &gt; 0) {
+            return "John Doe";  // String - valid
+        }
+        return 12345;  // Integer - potentially invalid
+    }
+    
+    @ValidateReturnType(expectedType = List.class)
+    public List&lt;User&gt; getUsers() {
+        return Arrays.asList(new User("Alice"), new User("Bob"));
+    }
+}
+
+// Runtime validation using reflection
+public class ValidationAspect {
+    
+    public static void validateMethod(Object instance, String methodName, Object result) {
+        try {
+            Method method = instance.getClass().getMethod(methodName);
+            ValidateReturnType annotation = method.getAnnotation(ValidateReturnType.class);
+            
+            if (annotation != null) {
+                Class&lt;?&gt; expectedType = annotation.expectedType();
+                Class&lt;?&gt; actualType = result.getClass();
+                
+                <span class="highlight-line">// Key question: What happens here depends on implementation</span>
+                if (!expectedType.isAssignableFrom(actualType)) {
+                    System.out.println("Warning: " + annotation.message());
+                    System.out.println("Expected: " + expectedType.getSimpleName());
+                    System.out.println("Actual: " + actualType.getSimpleName());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Validation error: " + e.getMessage());
+        }
+    }
+}
+
+// Test execution
+public static void main(String[] args) {
+    DataService service = new DataService();
+    Object result = service.getUserName(1);
+    
+    // The behavior depends on how validation is implemented
+    ValidationAspect.validateMethod(service, "getUserName", result);
+}</code></pre>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

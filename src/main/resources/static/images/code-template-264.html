@@ -1,0 +1,44 @@
+<!-- Question 264: Abstraction Example -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; }
+        .code { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <pre>
+abstract class Shape {
+    public abstract double calculateArea();
+    
+    public void displayArea() {
+        System.out.printf("%.2f", calculateArea());
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        System.out.print("Circle area: ");
+        circle.displayArea();
+    }
+}
+        </pre>
+    </div>
+</body>
+</html>

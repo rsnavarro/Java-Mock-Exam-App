@@ -1,0 +1,44 @@
+<!-- Question 265: Interface Implementation Example -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; }
+        .code { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <pre>
+interface Flyable {
+    void fly();
+}
+
+interface Swimmable {
+    void swim();
+}
+
+class Duck implements Flyable, Swimmable {
+    @Override
+    public void fly() {
+        System.out.print("Flying at 100 km/h");
+    }
+    
+    @Override
+    public void swim() {
+        System.out.print("Swimming at 50 km/h");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Duck duck = new Duck();
+        duck.fly();
+        System.out.print(", ");
+        duck.swim();
+    }
+}
+        </pre>
+    </div>
+</body>
+</html>

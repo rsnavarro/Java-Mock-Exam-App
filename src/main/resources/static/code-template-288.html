@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Annotation Code Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .code-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+        .line-numbers {
+            color: #666;
+            user-select: none;
+            margin-right: 15px;
+            display: inline-block;
+            width: 30px;
+            text-align: right;
+        }
+        .code-line {
+            padding: 2px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .keyword { color: #0000ff; font-weight: bold; }
+        .annotation { color: #808000; font-weight: bold; }
+        .string { color: #008000; }
+        .comment { color: #808080; font-style: italic; }
+        .type { color: #2b91af; }
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <div class="code-line">
+            <span class="line-numbers">1</span>
+            <span class="annotation">@Target</span>(<span class="type">ElementType</span>.<span class="keyword">METHOD</span>)
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">2</span>
+            <span class="annotation">@Retention</span>(<span class="type">RetentionPolicy</span>.<span class="keyword">RUNTIME</span>)
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">3</span>
+            <span class="keyword">public</span> <span class="annotation">@interface</span> <span class="type">MyAnnotation</span> {
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">4</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="type">String</span> <span class="keyword">value</span>() <span class="keyword">default</span> <span class="string">"default"</span>;
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">5</span>
+            }
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">6</span>
+            &nbsp;
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">7</span>
+            <span class="keyword">public</span> <span class="keyword">class</span> <span class="type">TestClass</span> {
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">8</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@MyAnnotation</span>(<span class="string">"test"</span>)
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">9</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">testMethod</span>() {
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">10</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Method implementation</span>
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">11</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;}
+        </div>
+        <div class="code-line">
+            <span class="line-numbers">12</span>
+            }
+        </div>
+    </div>
+</body>
+</html>

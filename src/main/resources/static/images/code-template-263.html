@@ -1,0 +1,45 @@
+<!-- Question 263: Polymorphism Example -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Courier New', monospace; background: #f8f9fa; padding: 20px; }
+        .code { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <pre>
+class Animal {
+    public void makeSound() {
+        System.out.print("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.print("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.print("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal1 = new Dog();
+        Animal animal2 = new Cat();
+        animal1.makeSound();
+        System.out.print(", ");
+        animal2.makeSound();
+    }
+}
+        </pre>
+    </div>
+</body>
+</html>

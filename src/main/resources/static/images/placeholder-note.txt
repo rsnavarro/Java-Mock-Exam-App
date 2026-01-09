@@ -1,0 +1,20 @@
+NOTE: For the demo, you'll need to add a JPEG image named "code-question-256.jpg" to this directory.
+
+The image should contain Java code like:
+
+public class Example {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = ++x;
+        System.out.println("x = " + x + ", y = " + y);
+    }
+}
+
+Expected output: x = 6, y = 6
+
+You can create this image using:
+1. Screenshot of code from IDE
+2. Online code-to-image generators
+3. Any image editor with code text
+
+For now, the system will handle missing images gracefully.
