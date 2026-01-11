@@ -1,0 +1,1 @@
+web: java -jar target/JavaMockExam-1.0-SNAPSHOT.jar
